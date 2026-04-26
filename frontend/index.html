@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Treasure Hunt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">💎 Treasure<span>AI</span></div>
+            <p class="subtitle">Solve the riddle to find the treasure</p>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-grid">
+            <!-- Left: Riddle Section -->
+            <section class="riddle-card">
+                <div class="card-header">
+                    <h2>The Challenge</h2>
+                    <span id="levelBadge" class="badge">Level 1</span>
+                </div>
+                
+                <div id="riddleDisplay" class="riddle-box">
+                    <p class="placeholder-text">Click "Start Hunt" to generate your first riddle...</p>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="answerInput" placeholder="Enter your answer..." disabled>
+                    <button id="submitBtn" class="btn btn-primary" disabled>Submit</button>
+                </div>
+                
+                <div id="feedback" class="feedback"></div>
+
+
+
+                <div class="actions">
+                    <button id="startBtn" class="btn btn-gold">✨ Start Hunt</button>
+                    <button id="nextBtn" class="btn btn-outline hidden">Next Riddle →</button>
+                </div>
+            </section>
+
+            <!-- Right: AI Chatbot -->
+            <section class="chat-card">
+                <div class="card-header">
+                    <h2>AI Guide</h2>
+                    <span class="status-dot"></span>
+                </div>
+                <div id="chatMessages" class="chat-messages">
+                    <div class="msg ai-msg">Greetings, adventurer! I am your AI Guide. Stuck? Ask me for a hint!</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Ask for a hint..." disabled>
+                    <button id="sendChatBtn" class="btn btn-icon" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Victory Modal -->
+        <div id="victoryModal" class="modal hidden">
+            <div id="confetti-container"></div>
+            <div class="modal-content">
+                <div class="celebration">🎉</div>
+                <img src="treasure.png" alt="Treasure" id="treasureImg" class="treasure-img">
+                <h1>Treasure Found!</h1>
+                <p>You solved the riddle with your sharp mind!</p>
+                <button id="resetBtn" class="btn btn-primary">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
