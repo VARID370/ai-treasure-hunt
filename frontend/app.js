@@ -1,6 +1,8 @@
 // State
 let currentRiddle = null;
 let currentAnswer = null;
+let currentClue = null;
+let currentHintCount = 0;
 let currentLevel = parseInt(localStorage.getItem('treasureHuntLevel')) || 1;
 let selectedDifficulty = 'medium';
 let usedAnswers = JSON.parse(localStorage.getItem('usedAnswers')) || [];
@@ -50,6 +52,8 @@ async function getRiddle() {
         if (data.riddle && data.answer) {
             currentRiddle = data.riddle;
             currentAnswer = data.answer.toLowerCase().trim();
+            currentClue = data.clue || '';
+            currentHintCount = 0; // Reset hint counter for new riddle
             usedAnswers.push(currentAnswer);
             saveState();
             
@@ -107,10 +111,13 @@ async function sendHintRequest() {
             body: JSON.stringify({
                 message: message,
                 riddle: currentRiddle,
-                answer: currentAnswer
+                answer: currentAnswer,
+                clue: currentClue,
+                hintCount: currentHintCount
             })
         });
         const data = await res.json();
+        if (typeof data.hintCount === 'number') currentHintCount = data.hintCount;
         appendChatMessage(data.reply, false);
     } catch (err) {
         appendChatMessage("Sorry, I'm a bit lost in the library. Ask again?", false);
