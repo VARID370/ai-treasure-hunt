@@ -4,7 +4,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const axios = require('axios');
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
