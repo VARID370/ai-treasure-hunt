@@ -137,10 +137,6 @@ app.get('/api/reward', async (req, res) => {
     }
 });
 
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`🚀 Server running at http://localhost:${PORT}`);
-    });
-}
-
-module.exports = app;
+app.listen(PORT, () => {
+    console.log(`🚀 OpenRouter-powered Server running at http://localhost:${PORT}`);
+});
