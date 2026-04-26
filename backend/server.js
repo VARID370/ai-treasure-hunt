@@ -49,7 +49,7 @@ app.get('/api/riddle', async (req, res) => {
         console.log(`[Riddle Request] Persona: ${persona}, Theme: ${theme}, Style: ${style}`);
         
         const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-            model: "google/gemini-2.0-flash-001",
+            model: "google/gemini-2.0-flash-lite-preview-02-05:free",
             messages: [{
                 role: "system",
                 content: `You are ${persona}. You generate high-quality, atmospheric but VERY EASY riddles. Your style is ${style}.`
@@ -94,7 +94,7 @@ app.post('/api/chat', async (req, res) => {
     try {
         const { message, riddle, answer } = req.body;
         const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-            model: "google/gemini-2.0-flash-001",
+            model: "google/gemini-2.0-flash-lite-preview-02-05:free",
             messages: [{
                 role: "user",
                 content: `You are a helpful AI Guide in a treasure hunt game. Riddle: "${riddle}", Answer: "${answer}". Player says: "${message}". Provide a helpful but cryptic hint (1-2 sentences). Do not say the answer word.`
@@ -118,7 +118,7 @@ app.post('/api/chat', async (req, res) => {
 app.get('/api/reward', async (req, res) => {
     try {
         const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-            model: "google/gemini-2.0-flash-001",
+            model: "google/gemini-2.0-flash-lite-preview-02-05:free",
             messages: [{
                 role: "user",
                 content: `Generate an epic, legendary 2-sentence description of a treasure found by a player who just finished a difficult AI treasure hunt. Describe glowing gems, rare gold, and a mythical artifact.`
